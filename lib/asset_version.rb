@@ -22,16 +22,9 @@ module ActionView::Helpers::AssetTagHelper
     end
     
     def version_cache_name(cache_name, version)
-      if cache_name
+      if cache_name && version
         cache_name = 'all' unless cache_name.is_a? String
-        cache_name = 
-          if version
-            [cache_name, version].join('_')          
-          else
-            [cache_name, Time.now.to_i].join('_')  
-          end
+        cache_name = [cache_name, version].join('_')          
       end
     end
-
-
 end

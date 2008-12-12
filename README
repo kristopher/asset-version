@@ -24,7 +24,7 @@ RAILS_ASSET_VERSION.
   
   
 If the version option is not passed and the RAILS_ASSET_VERSION constant is not set
-it will fallback to the standard behavior.
+they will fallback to the standard behavior.
 
   javacript_include_tag('my_js_file', 'my_second_js_file', :cache => 'my_js_files')
     
@@ -33,13 +33,6 @@ it will fallback to the standard behavior.
   
 stylesheet_link_tag syntax and behavior is identical. 
   
-
-Usefullness
-===========
-
-I have found that the query parameter that rails sets on these asset tags isn't 
-enough to keep the browser from using its cached versions of these files. 
-This method garantees the browser will use the new file and not its cached version.
 
 Homepage: http://github.com/kristopher/asset_version
 Copyright (c) 2008 Kristopher Chambers <kristopher.chambers@gmail.com>

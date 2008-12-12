@@ -19,7 +19,7 @@ module ActionView::Helpers::AssetTagHelper
         if version
           [cache_name, version].join('_')          
         else
-          [cache_name, "some_uuid"].join('_')  
+          [cache_name, Time.now.to_i].join('_')  
         end
     end
   end

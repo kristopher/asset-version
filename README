@@ -1,13 +1,11 @@
 AssetVersion
 ============
 
-Introduction goes here.
-
-
+  Versioning for cached assets.
+  
 Example
 =======
+ 
+Homepage: http://github.com/kristopher/asset_version
+Copyright (c) 2008 Kristopher Chambers <kristopher.chambers@gmail.com>
 
-Example goes here.
-
-
-Copyright (c) 2008 [name of plugin creator], released under the MIT license

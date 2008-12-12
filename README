@@ -1,11 +1,46 @@
 AssetVersion
 ============
-
-  Versioning for cached assets.
   
+  Versioning for cached assets files.
+        
 Example
 =======
- 
+
+If the RAILS_ASSET_VERSION constant is set it will be appended to your cache file name.
+  
+  On deploys set this constant to your svn/git revision, deploy timestamp, etc.
+  RAILS_ASSET_VERSION = 'some_ranbom_string'
+  
+  javacript_include_tag('my_js_file', 'my_second_js_file', :cache => 'my_js_files')
+    
+  #=> <script type="text/javascript" src="/javascript/my_js_files_some_random_string?123456789"></script>  
+  
+You can also use the version option. The version option will override the 
+RAILS_ASSET_VERSION.
+  
+  javacript_include_tag('my_js_file', 'my_second_js_file', :cache => 'my_js_files', :version => 'some_random_string')
+  
+  #=> <script type="text/javascript" src="/javascript/my_js_files_some_random_string?123456789"></script>  
+  
+  
+If the version option is not passed and the RAILS_ASSET_VERSION constant is not set
+it will fallback to the standard behavior.
+
+  javacript_include_tag('my_js_file', 'my_second_js_file', :cache => 'my_js_files')
+    
+  #=> <script type="text/javascript" src="/javascript/my_js_files?123456789"></script>  
+  
+  
+stylesheet_link_tag syntax and behavior is identical. 
+  
+
+Usefullness
+===========
+
+I have found that the query parameter that rails sets on these asset tags isn't 
+enough to keep the browser from using its cached versions of these files. 
+This method garantees the browser will use the new file and not its cached version.
+
 Homepage: http://github.com/kristopher/asset_version
 Copyright (c) 2008 Kristopher Chambers <kristopher.chambers@gmail.com>
 

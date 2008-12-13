@@ -1,9 +1,7 @@
 module ActionView::Helpers::AssetTagHelper  
-  
   def javascript_include_tag_with_versioned(*sources)
     set_cache_options_with_versioning_from_sources!(sources)
-    javascript_include_tag_without_versioned(*sources)
-    
+    javascript_include_tag_without_versioned(*sources)  
   end
 
   def stylesheet_link_tag_with_versioned(*sources)
@@ -22,9 +20,11 @@ module ActionView::Helpers::AssetTagHelper
     end
     
     def version_cache_name(cache_name, version)
-      if cache_name && (version || RAILS_ASSET_VERSION) 
+      if cache_name && (version || (defined?(::ASSET_VERSION) && ::ASSET_VERSION)) 
         cache_name = 'all' unless cache_name.is_a? String
-        cache_name = [cache_name, version || RAILS_ASSET_VERSION].join('_')          
+        cache_name = [cache_name, version || (defined?(::ASSET_VERSION) && ::ASSET_VERSION)].join('_')          
       end
+      cache_name
     end
 end
+

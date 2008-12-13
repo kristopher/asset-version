@@ -6,24 +6,23 @@ AssetVersion
 Example
 =======
 
-If the RAILS_ASSET_VERSION constant is set it will be appended to your cache file name.
+If the ASSET_VERSION constant is set it will be appended to your cache file name.
   
   On deploys set this constant to your svn/git revision, deploy timestamp, etc.
-  RAILS_ASSET_VERSION = 'some_ranbom_string'
+  ASSET_VERSION = 'some_ranbom_string'
   
   javacript_include_tag('my_js_file', 'my_second_js_file', :cache => 'my_js_files')
     
   #=> <script type="text/javascript" src="/javascript/my_js_files_some_random_string?123456789"></script>  
   
-You can also use the version option. The version option will override the 
-RAILS_ASSET_VERSION.
+You can also use the version option. The version option will override the ASSET_VERSION.
   
   javacript_include_tag('my_js_file', 'my_second_js_file', :cache => 'my_js_files', :version => 'some_random_string')
   
   #=> <script type="text/javascript" src="/javascript/my_js_files_some_random_string?123456789"></script>  
   
   
-If the version option is not passed and the RAILS_ASSET_VERSION constant is not set
+If the version option is not passed and the ASSET_VERSION constant is not set
 they will fallback to the standard behavior.
 
   javacript_include_tag('my_js_file', 'my_second_js_file', :cache => 'my_js_files')

@@ -1,3 +1,27 @@
+module AssetVersion
+  REVISION_FILE = File.join(RAILS_ROOT, 'REVISION')
+  
+  class << self
+    def version
+      unless @version
+        self.version = version_from_revision_file
+      end
+      @version
+    end
+    
+    def version=(value)
+      # leave only letters, numbers, dashes and underscores
+      @version = value.to_s.gsub(/[^[:alnum:]_\-]/, '')
+    end
+    
+    def version_from_revision_file
+      if File.exists?(REVISION_FILE)
+        File.read(REVISION_FILE)
+      end.to_s
+    end
+  end
+end
+
 module ActionView::Helpers::AssetTagHelper  
   def javascript_include_tag_with_versioned(*sources)
     set_cache_options_with_versioning_from_sources!(sources)
@@ -20,9 +44,9 @@ module ActionView::Helpers::AssetTagHelper
     end
     
     def version_cache_name(cache_name, version)
-      if cache_name && (version || (defined?(::ASSET_VERSION) && ::ASSET_VERSION)) 
+      if cache_name && (version || (AssetVersion.version)) 
         cache_name = 'all' unless cache_name.is_a? String
-        cache_name = [cache_name, version || (defined?(::ASSET_VERSION) && ::ASSET_VERSION)].join('_')          
+        cache_name = [cache_name, version || (AssetVersion.version)].join('_')          
       end
       cache_name
     end

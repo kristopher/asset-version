@@ -9,19 +9,14 @@
 
 == Example
 
-If you're using capistrano, you can set the instruct AssetVersion to grab the
-version information from capistrano. 
+If you're using capistrano, AssetVersion will automatically grab version
+information from your SCM on deploy. Otherwise you can manually set the
+ASSET_VERSION constant in your environment.rb or an initializer like so:
 
-  rake asset_version:install
-
-
-Otherwise you can manually set the ASSET_VERSION constant in your
-environment.rb or an initializer like so:
-
-  ASSET_VERSION = 'version_one'
+  AssetVersion.version = 'version_one'
 
 
-Now when you use javacript_include_tag or stylesheet_link_tag with the :cache 
+Now when you use javascript_include_tag or stylesheet_link_tag with the :cache 
 option, it will automatically include the version in the filename.
 
   javacript_include_tag('application', 'extra', :cache => 'all')

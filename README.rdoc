@@ -1,0 +1,40 @@
+= AssetVersion
+
+  Asset version ensures your users NEVER load out of date assets. Cached assets
+  include this version in the file name so a version change guarantees a new
+  request from the client.
+
+  This works only for javascript and stylesheets referenced with the :cache option.
+        
+
+== Example
+
+If you're using capistrano, you can set the instruct AssetVersion to grab the
+version information from capistrano. 
+
+  rake asset_version:install
+
+
+Otherwise you can manually set the ASSET_VERSION constant in your
+environment.rb or an initializer like so:
+
+  ASSET_VERSION = 'version_one'
+
+
+Now when you use javacript_include_tag or stylesheet_link_tag with the :cache 
+option, it will automatically include the version in the filename.
+
+  javacript_include_tag('application', 'extra', :cache => 'all')
+  #=> <script type="text/javascript" src="/javascripts/all_version_one?123456789"></script>  
+
+
+If necessary, you can override the version information on a per call basis by 
+supplying a :version option.  
+
+  stylesheet_link_tag('application', 'blueprint', :cache => 'all', :version => 'version_two')
+  #=> <script type="text/javascript" src="/stylesheets/all_version_two?123456789"></script>  
+  
+
+Homepage:: http://github.com/kristopher/asset_version
+License:: Copyright (c) 2008 Kristopher Chambers <mailto:kristopher.chambers@gmail.com>
+

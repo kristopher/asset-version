@@ -1,10 +1,10 @@
 = AssetVersion
 
-  Asset version ensures your users NEVER load out of date assets. Cached assets
-  include this version in the file name so a version change guarantees a new
-  request from the client.
+Asset version ensures your users NEVER load out of date assets. Cached assets
+include this version in the file name so a version change guarantees a new
+request from the client.
 
-  This works only for javascript and stylesheets referenced with the :cache option.
+This works only for javascript and stylesheets referenced with the :cache option.
         
 
 == Example

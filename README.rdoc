@@ -11,7 +11,7 @@ This works only for javascript and stylesheets referenced with the :cache option
 
 If you're using capistrano, AssetVersion will automatically grab version
 information from your SCM on deploy. Otherwise you can manually set the
-ASSET_VERSION constant in your environment.rb or an initializer like so:
+AssetVersion in your environment.rb or an initializer like so:
 
   AssetVersion.version = 'version_one'
 

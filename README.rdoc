@@ -1,8 +1,8 @@
 = AssetVersion
 
-Has the Rails asset versioning let you down? AssetVersion ensures your users NEVER load out of date assets. Cached assets
-include this version in the file name so a version change guarantees a new
-request from the client.
+Has the Rails asset versioning let you down? AssetVersion ensures your users
+NEVER load out of date assets. Cached assets include this version in the file
+name so a version change guarantees a new request from the client.
 
 This works only for javascript and stylesheets referenced with the :cache option.
         

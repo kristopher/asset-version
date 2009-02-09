@@ -6,7 +6,7 @@ name so a version change guarantees a new request from the client.
 
 This works only for javascript and stylesheets referenced with the :cache option.
         
-
+        
 == Example
 
 If you're using capistrano, AssetVersion will automatically grab version
@@ -28,7 +28,12 @@ supplying a :version option.
 
   stylesheet_link_tag('application', 'blueprint', :cache => 'all', :version => 'version_two')
   #=> <script type="text/javascript" src="/stylesheets/all_version_two?123456789"></script>  
-  
+
+== Install
+
+As a Rails plugin.
+
+  ./scpript/plugin install git://github.com/kristopher/asset-version.git
 
 Homepage:: http://github.com/kristopher/asset_version
 License:: Copyright (c) 2008 Kristopher Chambers <mailto:kristopher.chambers@gmail.com>

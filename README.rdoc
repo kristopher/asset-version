@@ -19,7 +19,7 @@ AssetVersion in your environment.rb or an initializer like so:
 Now when you use javascript_include_tag or stylesheet_link_tag with the :cache 
 option, it will automatically include the version in the filename.
 
-  javacript_include_tag('application', 'extra', :cache => 'all')
+  javascript_include_tag('application', 'extra', :cache => 'all')
   #=> <script type="text/javascript" src="/javascripts/all_version_one?123456789"></script>  
 
 

@@ -19,6 +19,22 @@ module AssetVersion
         File.read(REVISION_FILE)
       end.to_s
     end
+    
+    def version_from_git
+      begin
+        git_branch = `cd #{RAILS_ROOT} && git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
+        `cat #{RAILS_ROOT}/.git/refs/heads/#{git_branch}`.strip
+      rescue
+      end
+    end
+
+    def version_from_svn
+      begin
+        YAML::load(`svn info $RAILS_ROOT`)["Revision"].to_i
+      rescue
+      end
+    end
+
   end
 end
 
